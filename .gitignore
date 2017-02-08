@@ -1,0 +1,10 @@
+.classpath
+.project
+.idea/
+*.iml
+logs/
+target/
+release/
+.DS_Store
+doc
+.settings/
