@@ -16,6 +16,8 @@ public class DeadQueueProducer {
         ConnectionFactory factory = new ConnectionFactory();
         //设置MabbitMQ所在主机ip或者主机名
         factory.setHost("localhost");
+        factory.setUsername("guest");
+        factory.setPassword("guest");
 
         //创建一个连接
         Connection connection =factory.newConnection();
@@ -23,22 +25,30 @@ public class DeadQueueProducer {
         Channel channel = connection.createChannel();
 
         //指定一个队列
+        channel.exchangeDeclare(Constant.exchangeName,"direct");
         channel.queueDeclare(Constant.queueName, true, false, false, null);
-        channel.queueBind(Constant.queueName, "amq.direct", Constant.routingKey);
+        channel.queueBind(Constant.queueName, Constant.exchangeName, Constant.routingKey);
+
+        //创建delay queue
         HashMap<String, Object> arguments = new HashMap<String, Object>();
-        arguments.put("x-dead-letter-exchange", "amq.direct");
+        arguments.put("x-dead-letter-exchange", Constant.exchangeName);
         arguments.put("x-dead-letter-routing-key", Constant.routingKey);
+
+        channel.exchangeDeclare(Constant.delayExchangeName,"direct");
         channel.queueDeclare(Constant.delayQueueName, true, false, false, arguments);
-        //发送的消息
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String message = "hello world!" + dateFormat.format(new Date());
+        channel.queueBind(Constant.delayQueueName,Constant.delayExchangeName,Constant.delayRoutingKey);
+
 
         // 设置延时属性
         // 持久性 non-persistent (1) or persistent (2)
         AMQP.BasicProperties.Builder builder = new AMQP.BasicProperties.Builder();
         AMQP.BasicProperties properties = builder.expiration("5000").build();
+
+        //发送的消息
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String message = "hello world!" + dateFormat.format(new Date());
         //往队列中发出一条消息     这时候要发送的队列不应该是QUEUE_NAME，这样才能进行转发的
-        channel.basicPublish("", Constant.delayQueueName, properties, message.getBytes());
+        channel.basicPublish(Constant.delayExchangeName, Constant.delayRoutingKey, properties, message.getBytes());
         System.out.println("sent message: " + message + ",date:" + dateFormat.format(new Date()));
 
         // 关闭频道和连接

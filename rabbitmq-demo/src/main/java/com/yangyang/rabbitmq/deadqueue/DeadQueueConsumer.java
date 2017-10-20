@@ -11,10 +11,12 @@ import java.util.Date;
 public class DeadQueueConsumer {
 
     public static void main(String[] args) throws Exception{
-        ConnectionFactory connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost("localhost");
+        ConnectionFactory factory = new ConnectionFactory();
+        factory.setHost("localhost");
+        factory.setUsername("guest");
+        factory.setPassword("guest");
 
-        Connection connection = connectionFactory.newConnection();
+        Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
         channel.queueDeclare(Constant.queueName, true, false, false, null);
 
