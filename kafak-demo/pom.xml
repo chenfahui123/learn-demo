@@ -21,7 +21,7 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
-        <!-- log start -->
+        <!-- log4j start -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -37,7 +37,7 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
-        <!-- log end -->
+        <!-- log4j end -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka_2.11</artifactId>

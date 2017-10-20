@@ -1,4 +1,4 @@
-package com.yangyang.log;
+package com.yangyang.log4j;
 
 import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.helpers.LogLog;

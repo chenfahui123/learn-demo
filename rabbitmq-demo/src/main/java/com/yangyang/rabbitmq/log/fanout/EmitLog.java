@@ -18,7 +18,7 @@ public class EmitLog {
 		// 声明转发器和类型
 		channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
 
-		String message = new Date().toLocaleString() + " : log something";
+		String message = new Date().toLocaleString() + " : log4j something";
 		// 往转发器上发送消息
 		channel.basicPublish(EXCHANGE_NAME, "", null, message.getBytes());
 

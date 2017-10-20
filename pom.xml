@@ -10,6 +10,7 @@
     <module>log4j-appender</module>
     <module>java-core</module>
     <module>kafak-demo</module>
+    <module>logback-appender</module>
   </modules>
 
   <build>
