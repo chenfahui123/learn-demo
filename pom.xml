@@ -11,6 +11,10 @@
     <module>java-core</module>
     <module>kafak-demo</module>
     <module>logback-appender</module>
+      <module>wx-demo</module>
+      <module>spring-tag</module>
+      <module>spring-learn</module>
+      <module>vertx-demo</module>
   </modules>
 
   <build>

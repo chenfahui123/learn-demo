@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:myname="http://www.yangyang.com/schema/user"
+       xsi:schemaLocation="
+     http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.yangyang.com/schema/user
+     classpath:META-INF/spring-user.xsd">
+
+    <!--
+         http://www.yangyang.com/schema/spring-user.xsd
+在这里改为classpath:META-INF/spring-user.xsd用于本地运行
+
+    -->
+    <myname:user id="testBean" userName="cong" email="mail.163.com"/>
+</beans>

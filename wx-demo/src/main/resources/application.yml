@@ -1,0 +1,3 @@
+server:
+  context-path: /wxdemo
+  port: 9999
