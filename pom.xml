@@ -15,6 +15,7 @@
       <module>spring-tag</module>
       <module>spring-learn</module>
       <module>vertx-demo</module>
+      <module>qrcode-demo</module>
   </modules>
 
   <build>
