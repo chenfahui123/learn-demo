@@ -1,6 +1,6 @@
-package com.csy.wx.controller;
+package com.yangyang.wx.controller;
 
-import com.csy.wx.service.WxJSAPICenter;
+import com.yangyang.wx.service.WxJSAPICenter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController {
     @RequestMapping(value="/login",method= RequestMethod.GET)
     public String index(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        String redirectUrl="http://test-iappweb.jpushoa.com/wxdemo/v1/wx/callback";
+        String redirectUrl="http://test-iappweb.aaa.com/wxdemo/v1/wx/callback";
         String url = WxJSAPICenter.createOauthUrlForCode(redirectUrl);
         System.out.println("url:"+url);
         response.sendRedirect(url);

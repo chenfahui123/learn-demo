@@ -1,4 +1,4 @@
-package com.csy.wx.service;
+package com.yangyang.wx.service;
 
 public class WxJSAPIConfig {
     //微信公众号部分

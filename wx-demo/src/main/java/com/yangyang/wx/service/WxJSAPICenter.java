@@ -1,4 +1,4 @@
-package com.csy.wx.service;
+package com.yangyang.wx.service;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.ParseException;
