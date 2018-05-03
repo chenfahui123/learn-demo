@@ -42,7 +42,7 @@ public class DeadQueueProducer {
         // 设置延时属性
         // 持久性 non-persistent (1) or persistent (2)
         AMQP.BasicProperties.Builder builder = new AMQP.BasicProperties.Builder();
-        AMQP.BasicProperties properties = builder.expiration("5000").build();
+        AMQP.BasicProperties properties = builder.expiration("5000").build();//设置消息的过期时间为5秒
 
         //发送的消息
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
